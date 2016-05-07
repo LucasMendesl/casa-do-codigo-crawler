@@ -10,7 +10,9 @@ var headers = {
 	'Host':'www.casadocodigo.com.br'
 };
 
-var books = [];
+function BookCollection() {
+	this.books = [];
+}
 
 function getBookBySpec (spec) {
 	return request({
@@ -36,6 +38,7 @@ function getBookBySpec (spec) {
 function getBookInfo( urlList ){
 
     return new bluebird(function (resolve, reject){
+				var collection = new BookCollection();
 
         async.whilst(function(){
             return urlList.length > 0;
@@ -61,7 +64,7 @@ function getBookInfo( urlList ){
                     urlImagem: currentUrl.imageLink
                 }
 
-								books.push(bookInfo);
+								collection.books.push(bookInfo);
                 callback();
             });
         },
@@ -69,7 +72,7 @@ function getBookInfo( urlList ){
             if (err)
                 reject(err);
 
-            resolve(books);
+            resolve(collection.books);
         });
     });
 }
