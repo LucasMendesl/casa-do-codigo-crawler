@@ -1,0 +1,20 @@
+{
+  "name": "casadocodigo",
+  "version": "1.0.0",
+  "description": "a simple restful api to extract book info in casa do codigo",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm install && node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lucas Mendes Loureiro",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.0.0-rc.4",
+    "bluebird": "^3.3.5",
+    "cheerio": "^0.20.0",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "request": "^2.72.0"
+  }
+}
