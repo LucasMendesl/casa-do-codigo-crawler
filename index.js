@@ -1,5 +1,5 @@
 var app = require('./express-config')();
 
-app.listen(3000, function() {
-  console.log('servidor rodando na porta 3000!');
+app.listen(app.get('port'), function() {
+  console.log('servidor rodando na porta %s' + app.get('port'));
 });
