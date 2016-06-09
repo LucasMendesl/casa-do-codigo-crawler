@@ -3,7 +3,7 @@ var crawler = require('../crawler/casaDoCodigoCrawler');
 module.exports = function(app) {
 
     app.get('/', function (req, res){
-      res.send({ message: 'Bem vindo a Api da casa do código!' });
+      res.send({ message: 'Casa do código Teste!' });
     });
 
     app.get('/api/livros/:urlCasaDoCodigo', function (req, res){
