@@ -4,8 +4,7 @@
   "description": "a simple restful api to extract book info in casa do codigo",
   "main": "index.js",
   "scripts": {
-    "start": "npm install && node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm install && node api/server.js"
   },
   "author": "Lucas Mendes Loureiro",
   "license": "ISC",
