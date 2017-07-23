@@ -5,13 +5,20 @@ const async	   = require('async');
 
 const BASE_URL = 'https://www.casadocodigo.com.br';
 
-let getBookPrices = ($) => {
+function getBookPrices ($) {
     let prices = [];
-    $('.adicionarAoCarrinho-listaOfertas li p').each((key, value) => prices.push($(value).text().trim().replace(/\t\n/gi, '')));    
+    $('.adicionarAoCarrinho-listaOfertas li p').each((key, value) => prices.push(replaceValues($(value).text())));    
     return prices;
 }
 
-let prepareRequestData = (url) => {
+function replaceValues (textValue) {
+    return textValue.trim()
+                    .replace(/\t\n/g, '')
+                    .replace(/\n\t/g, '')
+                    .replace(/\t/g, '');
+}
+
+function prepareRequestData (url) {
     let data = {
          url: url,
         jar: true,
@@ -62,7 +69,7 @@ module.exports = class BooksRepository {
 
                         bookCollection.push({
                             title: `${$('.cabecalhoProdutoLivro-titulo-principal').text().trim()} ${$('.cabecalhoProdutoLivro-titulo-sub').text().trim()}`,
-                            description: $('.infoSection').eq(0).find('p').text().replace(/\sveja o sumário completo/g,'').trim().replace(/\t\n/g, '').replace(/\n\t/g, '').replace(/\t/g, ''),
+                            description: replaceValues($('.infoSection').eq(0).find('p').text().replace(/\sveja o sumário completo/g,'')),
                             price: getBookPrices($),
                             imageUrl: currentUrl.imageLink            
                         });
